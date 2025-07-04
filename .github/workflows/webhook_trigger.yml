@@ -1,4 +1,4 @@
-name: Send Webhook to Flask
+name: GitHub Event Webhook
 
 on:
   push:
@@ -6,18 +6,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  send-event:
+  send-webhook:
     runs-on: ubuntu-latest
+
     steps:
     - name: Send webhook to Flask app
       run: |
-        curl -X POST https://9511-2a09-bac5-3fdc-11cd-00-1c6-b.ngrok-free.app/webhook \
+        curl -X POST https://YOUR_FLASK_APP_URL/webhook \
         -H "Content-Type: application/json" \
         -d '{
           "action": "${{ github.event_name }}",
           "author": "${{ github.actor }}",
           "from_branch": "${{ github.head_ref || github.ref_name }}",
           "to_branch": "${{ github.base_ref || github.ref_name }}",
-          "timestamp": "${{ github.event.head_commit.timestamp || github.event.pull_request.updated_at }}"
+          "timestamp": "${{ github.event.head_commit.timestamp || github.event.pull_request.updated_at || github.event.repository.pushed_at }}"
         }'
-Testing webhook with ngrok 
+
