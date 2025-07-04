@@ -1,32 +1,34 @@
 # GitHub Webhook Integration Project 🚀
 
-This project demonstrates a **real-time webhook system** using GitHub Actions, Flask, MongoDB Atlas, and ngrok.
+This project demonstrates a real-time GitHub Actions to Flask integration using Webhooks, MongoDB, and ngrok.
+
+## 🔧 Tech Stack
+
+- **GitHub Actions:** Sends webhooks on every push/pull request
+- **Flask App:** Receives and logs events
+- **MongoDB Atlas:** Stores webhook data
+- **ngrok:** Exposes localhost to the internet for webhook access
+
+## 📂 Repositories
+
+- **action-repo:** Contains the GitHub Action workflow file
+- **webhook-repo:** Contains the Flask app with MongoDB integration
 
 ---
 
-## 🔧 Project Structure
+## ✅ How It Works
 
-| Repo | Description |
-|------|-------------|
-| [`action-repo`](https://github.com/Zainaafreen/action-repo) | Contains the GitHub Action that triggers a webhook. |
-| `webhook-repo` | Flask app that receives webhook data and displays it on a dashboard. |
-
----
-
-## 🎯 Features
-
-✅ GitHub Actions workflow triggers on push / pull request  
-✅ Sends webhook to Flask app via `ngrok`  
-✅ Flask app receives & stores data in **MongoDB Atlas**  
-✅ Frontend dashboard shows recent GitHub activity  
-✅ Auto-refreshes every 15 seconds  
+1. You push to `action-repo`.
+2. GitHub triggers the `webhook_trigger.yml` action.
+3. That action sends a POST request (webhook) to your Flask app.
+4. Flask receives it and stores the data in MongoDB.
+5. Your web dashboard displays all incoming events live!
 
 ---
 
-## 🚀 Setup Instructions
+## ▶️ How to Run
 
-### 1️⃣ Clone both repos:
-
-```bash
-git clone https://github.com/Zainaafreen/action-repo.git
-git clone https://github.com/Zainaafreen/webhook-repo.git
+1. **Clone** both repos:
+   ```bash
+   git clone https://github.com/yourusername/action-repo
+   git clone https://github.com/yourusername/webhook-repo
