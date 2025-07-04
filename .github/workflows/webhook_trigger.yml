@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Send webhook to Flask app
         run: |
-          curl -X POST https://8254-2a09-bac5-3fdc-11cd-00-1c6-b.ngrok-free.app/webhook \
+          curl -X POST   https://e355-2a09-bac5-3fdc-11cd-00-1c6-b.ngrok-free.app \
           -H "Content-Type: application/json" \
           -d '{
             "action": "${{ github.event_name }}",
